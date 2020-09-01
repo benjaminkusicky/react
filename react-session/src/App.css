@@ -1,0 +1,14 @@
+.header {
+  background: bisque;
+  padding: 4px;
+}
+
+.actions {
+  background: burlywood;
+  padding: 4px;
+}
+
+.list {
+  background: steelblue;
+  padding: 4px;
+}

@@ -6,9 +6,7 @@ type SheepListProps = {
   sheeps: SheepItem[];
 };
 
-export const SheepList: React.FC<SheepListProps> = ({ sheeps }) => {
-  console.log("SheepList rendered");
-
+export const SheepList: React.FC<SheepListProps> = React.memo(({ sheeps }) => {
   return (
     <div>
       {sheeps.map((sheep: SheepItem) => (
@@ -16,4 +14,4 @@ export const SheepList: React.FC<SheepListProps> = ({ sheeps }) => {
       ))}
     </div>
   );
-};
+});

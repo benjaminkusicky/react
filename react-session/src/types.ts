@@ -1,4 +1,4 @@
 export type SheepItem = {
-  id: number;
+  id: string;
   isBlack: boolean;
 };
