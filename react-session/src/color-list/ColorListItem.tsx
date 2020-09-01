@@ -15,7 +15,7 @@ export const ColorListItem: React.FC<ColorListItemProps> = ({
         display: "flex",
         background: color.value,
         margin: "8px auto 8px auto",
-        width: "700px",
+        width: "400px",
         height: "80px",
         padding: "8px",
         fontSize: "20px",
