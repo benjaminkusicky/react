@@ -143,5 +143,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "worker-loader": "^3.0.2"
   }
 }
