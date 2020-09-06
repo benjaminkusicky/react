@@ -16,6 +16,7 @@
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
+    "as-bind": "^0.4.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "8.1.0",
@@ -74,7 +75,10 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "build:react": "node scripts/build.js",
+    "build:wasm": "asc ./node_modules/as-bind/lib/assembly/as-bind.ts ./src/wasm/assembly/index.ts -b public/my-wasm.wasm --optimize",
+    "build-wasm-react": "npm run build:wasm && npm run build:react"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -145,6 +149,7 @@
     ]
   },
   "devDependencies": {
+    "assemblyscript": "^0.14.10",
     "worker-loader": "^3.0.2"
   }
 }
