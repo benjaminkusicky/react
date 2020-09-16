@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState } from "react";
 import { SheepItem } from "./types";
 import { SheepList } from "./SheepList";
 import { ActionButton } from "./ActionButton";
@@ -12,45 +12,42 @@ export const App = () => {
   const [sheeps, setSheeps] = useState<SheepItem[]>([]);
   const [showCount, setShowCount] = useState<boolean>(false);
 
-  const addSheep = useCallback(() => {
+  const addSheep = () => {
     const isBlack = !!Math.round(Math.random());
 
     isBlack
-      ? setBlackSheepCount((prev) => prev + 1)
-      : setWhiteSheepCount((prev) => prev + 1);
+      ? setBlackSheepCount(blackSheepCount + 1)
+      : setWhiteSheepCount(whiteSheepCount + 1);
 
-    setSheeps((prev) => [...prev, { id: uuidv4(), isBlack }]);
+    setSheeps([...sheeps, { id: uuidv4(), isBlack }]);
     setShowCount(false);
-  }, []);
+  };
 
-  const addTwoSheeps = useCallback(() => {
+  const addTwoSheeps = () => {
     addSheep();
     addSheep();
-  }, []);
+  };
 
-  const clearSheeps = useCallback(() => {
+  const clearSheeps = () => {
     setSheeps([]);
     setWhiteSheepCount(0);
     setBlackSheepCount(0);
     setShowCount(false);
-  }, []);
+  };
 
-  const countSheeps = useCallback(() => setShowCount(true), []);
+  const countSheeps = () => setShowCount(true);
 
-  const headerChildren = useMemo(
-    () =>
-      showCount ? (
-        <div>{`I have ${whiteSheepCount} white sheeps and ${blackSheepCount} black sheeps`}</div>
-      ) : (
-        <div>I do not know the number of the sheeps</div>
-      ),
-    [showCount]
-  );
+  const headerChildren = () =>
+    showCount ? (
+      <div>{`I have ${whiteSheepCount} white sheeps and ${blackSheepCount} black sheeps`}</div>
+    ) : (
+      <p>I do not know the number of the sheeps</p>
+    );
 
   return (
     <>
       <div className="header">
-        <Header title="My sheeps">{headerChildren}</Header>
+        <Header title="My sheeps">{headerChildren()}</Header>
       </div>
       <div className="actions">
         <ActionButton action={addSheep}>Add sheep</ActionButton>
